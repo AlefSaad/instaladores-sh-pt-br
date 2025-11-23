@@ -95,7 +95,8 @@
 
 # Como usar:
 
- - Primeiro, descompacte o arquivo tar.gz ou digite `git clone https://github.com/AlefSaad/instaladores-sh-pt-br.git` no terminal.
+ - Vá em Releases e baixe o arquivo Source code zip ou tar.gz ou digite `git clone https://github.com/AlefSaad/instaladores-sh-pt-br.git` no terminal.
+ - Então, descompacte o arquivo se tiver baixado do Source code (zip ou tar.gz). Se tiver digitado git clone no terminal, ignore essa parte.
  - Então, abra a pasta descompactada no terminal e digite `sudo bash "./instaladores-pt-br.sh"`.
  - Então, siga as instruções do instalador.
 
