@@ -1,4 +1,4 @@
-# Shell Scripts de pós-instalação
+# Shell Scripts de pós-instalação para Linux
 
 **ATENÇÃO: Este instalador não fere com os direitos proprietários das respectivas empresas, apenas obtém o instalador diretamente do site do aplicativo e automatiza a instalação.**
 
