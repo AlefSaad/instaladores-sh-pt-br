@@ -1,5 +1,7 @@
 # Shell Scripts de pós-instalação v1.0
 
+**ATENÇÃO: Este instalador não fere com os direitos proprietários das respectivas empresas, apenas obtém o instalador diretamente do site do aplicativo e automatiza a instalação.**
+
 ## Instalador do Firefox
 
 ### Funciona para as seguintes versões do Firefox:
@@ -65,8 +67,6 @@
  - Pacote Snap oficial
 
 ## Instalador do Minecraft Launcher
-
-Atenção: ele não fere com os direitos proprietários da Microsoft e/ou da Mojang. Apenas pega o instalador do site do Minecraft e automatiza a instalação. Ele não faz uso de pirataria, você ainda terá que possuir o Minecraft original na sua conta da Microsoft.
 
 ### Pode instalar o Minecraft Launcher por:
  - Pacote .deb 
