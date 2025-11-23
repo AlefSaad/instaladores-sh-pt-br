@@ -59,7 +59,7 @@ snapd() {
     exit 0
 }
 
-flatpak() {
+flatpak_install() {
     echo "É necessário é Flatpak com o repositório Flathub para esta instalação."
     echo "Instalando o pacote Flatpak..."
     flatpak install -y flathub org.onlyoffice.desktopeditors
@@ -82,7 +82,7 @@ case "$DISTRO" in
         if [ "$inst_method" = "deb" ]; then
             deb
         elif [ "$inst_method" = "flatpak" ]; then
-            flatpak
+            flatpak_install
         elif [ "$inst_method" = "snapd" ]; then
             snapd
         elif [ "$inst_method" = "appimage" ]; then
@@ -97,7 +97,7 @@ case "$DISTRO" in
         if [ "$inst_method" = "rpm" ]; then
             rpm
         elif [ "$inst_method" = "flatpak" ]; then
-            flatpak
+            flatpak_install
         elif [ "$inst_method" = "snapd" ]; then
             snapd
         elif [ "$inst_method" = "appimage" ]; then
@@ -113,7 +113,7 @@ case "$DISTRO" in
         fi
         read -p "Você gostaria de instalar via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? " inst_method
         if [ "$inst_method" = "flatpak" ]; then
-            flatpak
+            flatpak_install
         elif [ "$inst_method" = "snapd" ]; then
             snapd
         elif [ "$inst_method" = "appimage" ]; then

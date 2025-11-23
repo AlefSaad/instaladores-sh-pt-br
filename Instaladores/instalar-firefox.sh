@@ -149,7 +149,7 @@ install_flatpak() {
         flatpak install -y flathub org.mozilla.firefox
         echo "Instalação finalizada!"
         exit 0
-    elif [ "$firefox_version" = "firefox-beta" ];
+    elif [ "$firefox_version" = "firefox-beta" ]; then
         echo "Instalando a versão $firefox_name do Firefox em Flatpak..."
         flatpak install -y flathub org.mozilla.firefox.Beta
         echo "Instalação finalizada!"

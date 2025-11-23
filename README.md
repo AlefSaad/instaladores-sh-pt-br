@@ -52,7 +52,7 @@
  - Bundle do Clear Linux
  - URPMI do Mageia
  - Portage do Gentoo
- 
+
 ## Instalador do Discord
 
 ### Pode instalar o Discord por:
@@ -69,7 +69,7 @@
 ## Instalador do Minecraft Launcher
 
 ### Pode instalar o Minecraft Launcher por:
- - Pacote .deb 
+ - Pacote .deb
  - Pacote .tar.gz
  - Repositório AUR
 
