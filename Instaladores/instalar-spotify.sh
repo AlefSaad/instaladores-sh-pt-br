@@ -47,7 +47,8 @@ snap() {
 
 case "$DISTRO" in
     ubuntu|pop|zorin|mint|debian|elementary)
-        read -p "Quer instalar via PPA (digite 'ppa'), Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? " inst_method_debian
+        echo "Quer instalar via PPA (digite 'ppa'), Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? "
+        read inst_method_debian
         if [ "$inst_method_debian" = "ppa" ]; then
             ppa
         elif [ "$inst_method_debian" = "flatpak" ]; then
@@ -60,7 +61,8 @@ case "$DISTRO" in
         fi
         ;;
     *)
-        read -p "Quer instalar via Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? " inst_method
+        echo "Quer instalar via Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? "
+        read inst_method
         if [ "$inst_method" = "flatpak" ]; then
             flatpak
         elif [ "$inst_method" = "snap" ]; then

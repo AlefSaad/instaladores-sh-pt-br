@@ -78,7 +78,8 @@ appimage() {
 
 case "$DISTRO" in
     ubuntu|debian|mint|pop|zorin|elementary)
-        read -p "Você gostaria de instalar via pacote Debian (digite 'deb'), via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? " inst_method
+        echo "Você gostaria de instalar via pacote Debian (digite 'deb'), via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? "
+        read inst_method
         if [ "$inst_method" = "deb" ]; then
             deb
         elif [ "$inst_method" = "flatpak" ]; then
@@ -93,7 +94,8 @@ case "$DISTRO" in
         fi
         ;;
     fedora|rhel|centos|rocky|almalinux)
-        read -p "Você gostaria de instalar via pacote RPM (digite 'rpm'), via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? " inst_method
+        echo "Você gostaria de instalar via pacote RPM (digite 'rpm'), via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? "
+        read inst_method
         if [ "$inst_method" = "rpm" ]; then
             rpm
         elif [ "$inst_method" = "flatpak" ]; then

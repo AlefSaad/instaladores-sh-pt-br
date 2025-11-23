@@ -35,6 +35,7 @@ if [ "$DISTRO" = "debian" ]; then
         *)
             DEB_VER=0 ;;
         esac
+    fi
     echo "Sistema baseado em Debian detectado (versão principal: $DEB_VER)."
     echo "É de acordo com a versão do Debian. Se for Sid, será 99 e se não for reconhecível, será 0."
     return 0
@@ -43,24 +44,19 @@ fi
 # Perguntando a versão do Firefox que você gostaria de instalar.
 echo "Qual versão do Firefox você gostaria de instalar? Normal (digite 'firefox'), ESR (digite 'firefox-esr'),"
 echo "Beta (digite 'firefox-beta', Dev Edition (digite 'firefox-devedition) ou o Nightly (digite 'firefox-nightly')."
-read $firefox_version
+read firefox_version
 
 # Criando variáveis para comandos echo
 if [ "$firefox_version" = "firefox" ]; then
     firefox_name="Normal"
-    return 0
 elif [ "$firefox_version" = "firefox-esr" ]; then
     firefox_name="ESR"
-    return 0
 elif [ "$firefox_version" = "firefox-beta" ]; then
     firefox_name="Beta"
-    return 0
 elif [ "$firefox_version" = "firefox-devedition" ]; then
     firefox_name="Dev Edition"
-    return 0
 elif [ "$firefox_version" = "firefox-nightly" ]; then
     firefox_name="Nightly"
-    return 0
 else
     echo "Versão do Firefox não detectada. Digite 'firefox', 'firefox-esr', 'firefox-beta', 'firefox-devedition' ou 'firefox-nightly'."
     exit 1
@@ -71,20 +67,15 @@ firefox_name=${firefox_name:-unknown}
 # Criando variáveis para Snap
 if [ "$firefox_version" = "firefox" ]; then
     firefox_snap_ver="latest/stable"
-    return 0
 elif [ "$firefox_version" = "firefox-esr" ]; then
     firefox_snap_ver="esr/stable"
-    return 0
 elif [ "$firefox_version" = "firefox-beta" ]; then
     firefox_snap_ver="latest/beta"
-    return 0
 elif [ "$firefox_version" = "firefox-nightly" ]; then
     firefox_snap_ver="latest/edge"
-    return 0
 elif [ "$firefox_version" = "firefox-devedition" ]; then
     echo "A versão Dev Edition do Firefox não tem suporte a Snaps."
     firefox_snap_ver="unsupported"
-    return 2
 else
     echo "Versão do Firefox não detectada. Digite 'firefox', 'firefox-esr', 'firefox-beta', 'firefox-devedition' ou 'firefox-nightly'."
     exit 1

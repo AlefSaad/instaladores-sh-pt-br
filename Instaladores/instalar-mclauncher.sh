@@ -95,6 +95,7 @@ install_aur() {
         echo "git pull"
         echo "makepkg -si"
         return 0
+    fi
 }
 
 case "$DISTRO" in
