@@ -3,7 +3,11 @@
 ## Instalador do Firefox
 
 ### Funciona para as seguintes versões do Firefox:
-firefox, firefox-esr, firefox-beta, firefox-devedition, firefox-nightly
+ - Firefox
+ - Firefox ESR
+ - Firefox Beta
+ - Firefox Nightly
+ - Firefox Dev Edition
 
 ### Pode instalar o Firefox por:
  - Arquivo tar.xz;
@@ -15,7 +19,9 @@ firefox, firefox-esr, firefox-beta, firefox-devedition, firefox-nightly
 ## Instalador do Brave
 
 ### Funciona para as seguintes versões do Brave:
-release, beta, nightly
+ - Release
+ - Beta
+ - Nightly
 
 ### Pode instalar o Brave por:
  - Script de instalação SH;
