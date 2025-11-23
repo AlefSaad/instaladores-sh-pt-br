@@ -163,7 +163,8 @@ install_flatpak() {
         exit 0
     else
         echo "Versão $firefox_name do Firefox não suportada pelo Flatpak ou versão desconhecida do Firefox."
-        return 1 2
+        return 1
+        return 2
     fi
 }
 
@@ -173,7 +174,7 @@ install_tarball() {
     echo "Certifique-se de ter as dependências wget e tar."
     echo "Baixando o tarball do Firefox do site oficial..."
     wget -O $firefox_version-latest.tar.xz "$firefox_tarball_link"
-    read -p "Aonde você gostaria de extrair o tarball?" $folder_extract
+    read -p "Aonde você gostaria de extrair o tarball?" folder_extract
     echo "Extraindo o tarball do Firefox..."
     tar xJf $firefox_version-latest.tar.xz -C $folder_extract
     echo "Criando link simbólico para o executável do Firefox..."
