@@ -183,12 +183,12 @@ install_firefox_native() {
     echo "O método do gerenciador nativo funciona nos seguintes gerenciadores de pacotes: dnf, zypp, pacman, xbps, apk e portage."
     echo "Instalando o Firefox via gerenciador nativo..."
     case "$DISTRO" in
-        fedora|rhel|centos|rocky|almalinux) sudo dnf install -y firefox ;;
-        opensuse*|suse) sudo zypper install -y firefox ;;
-        arch|manjaro|endeavouros) sudo pacman -Syu --noconfirm firefox ;;
-        void) sudo xbps-install -Sy firefox ;;
-        alpine) sudo apk add --yes firefox ;;
-        gentoo) sudo emerge --ask=n www-client/firefox ;;
+        fedora|rhel|centos|rocky|almalinux) sudo dnf install -y $firefox_version ;;
+        opensuse*|suse) sudo zypper install -y $firefox_version ;;
+        arch|manjaro|endeavouros) sudo pacman -Syu --noconfirm $firefox_version ;;
+        void) sudo xbps-install -Sy $firefox_version ;;
+        alpine) sudo apk add --yes $firefox_version ;;
+        gentoo) sudo emerge --ask=n www-client/$firefox_version ;;
         *)
             echo "Gerenciador nativo não reconhecido."
             return 1
