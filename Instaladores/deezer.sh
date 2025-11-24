@@ -15,7 +15,7 @@ esac
 
 echo "Estabelecendo variáveis..."
 
-API=https://api.github.com/repos/dail8859/Deezer-Desktop/releases/latest
+API=https://api.github.com/repos/aunetx/deezer-linux/releases/latest
 
 if [ "$ARCH_DL" = "x86_64" ]; then
     arch_dl_rpm="x86_64"
@@ -68,16 +68,33 @@ tarxz() {
 
 deb() {
     echo "Estabelecendo variáveis..."
-    ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_deb" | grep '\.deb$' | cut -d '"' -f 4)
+    echo "DEBUG: API = $API"
+    echo "DEBUG: arch_dl_deb = $arch_dl_deb"
+
+    ASSET=$(curl -s "$API" \
+        | grep -o '"browser_download_url": *"[^"]*"' \
+        | grep '\.deb"' \
+        | grep "$arch_dl_deb" \
+        | cut -d '"' -f 4)
+
+    if [ -z "$ASSET" ]; then
+        echo "Erro: Não encontrei nenhum .deb correspondente."
+        exit 1
+    fi
+
     echo "Baixando o pacote Debian do GitHub..."
     wget -O deezer-linux.deb "$ASSET"
+
     echo "Instalando o pacote Debian..."
     sudo dpkg -i deezer-linux.deb || sudo apt -f install -y
+
     echo "Removendo o pacote remanescente..."
     rm ./deezer-linux.deb
+
     echo "Instalação finalizada!"
     exit 0
 }
+
 
 rpm_opensuse() {
     echo "Estabelecendo variáveis..."

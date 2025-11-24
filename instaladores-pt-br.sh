@@ -22,7 +22,6 @@ abrir_instalador() {
     cd "./Instaladores"
     echo "Inicializando instalador selecionado..."
     sudo bash "$(pwd)/$setup_installer.sh"
-    echo "Instalador inicializado."
     exit 0
 }
 
