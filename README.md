@@ -56,8 +56,8 @@
 ## Instalador do Discord
 
 ### Pode instalar o Discord por:
- - Pacote .deb para sistemas baseados em Debian;
- - Pacote .tar.gz para o resto.
+ - Pacote Debian;
+ - Tarball.
 
 ## Instalador do Spotify
 
