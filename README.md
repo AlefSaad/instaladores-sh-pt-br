@@ -95,7 +95,7 @@
 
 ## Instalador do Deezer para Linux
 
-**ATENÇÃO: O Deezer não tem uma versão oficial com suporte a Linux. Este instalador instala uma versão comunitária para Linux disponível no link a seguir:** https://github.com/aunetx/deezer-linux#deezer-for-linux
+**ATENÇÃO: O Deezer não tem uma versão oficial com suporte a Linux. Este instalador instala uma versão comunitária para Linux disponível no link a seguir:** https://github.com/aunetx/deezer-linux
 
 ### Pode instalar por:
  - AppImage;
