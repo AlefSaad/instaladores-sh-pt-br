@@ -18,7 +18,7 @@ if [ -f /etc/os-release ]; then
     DISTRO=$(echo "${ID:-desconhecido}" | tr '[:upper:]' '[:lower:]')
     NAME=${NAME:-desconhecido}
 fi
-echo "📦 Distribuição detectada: ${DISTRO:-indetectável}"
+echo "📦 Distribuição detectada: ${NAME:-indetectável}"
 
 # observações
 
@@ -100,7 +100,8 @@ install_aur() {
 
 case "$DISTRO" in
     arch|manjaro|endeavouros)
-        read -p "Gostaria de instalar via pacote AUR (digite 'aur') ou via tar.gz (digite 'tar')? " inst_method_arch
+        echo "Gostaria de instalar via pacote AUR (digite 'aur') ou via tar.gz (digite 'tar')? "
+        read inst_method_arch
         if [ "$inst_method_arch" = "aur" ]; then
             install_aur
         elif [ "$inst_method_arch" = "tar" ]; then
@@ -110,7 +111,8 @@ case "$DISTRO" in
         fi
         ;;
     debian|ubuntu|zorin|mint|elementary|pop)
-        read -p "Gostaria de instalar via pacote .deb (digite 'deb') ou via tar.gz (digite 'tar')? " inst_method_debian
+        echo "Gostaria de instalar via pacote .deb (digite 'deb') ou via tar.gz (digite 'tar')? "
+        read inst_method_debian
         if [ "$inst_method_debian" = "deb" ]; then
             install_debian
         elif [ "$inst_method_debian" = "tar" ]; then

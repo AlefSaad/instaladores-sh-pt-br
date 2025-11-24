@@ -10,7 +10,7 @@ if [ -f /etc/os-release ]; then
     NAME=${NAME:-desconhecido}
     VER=${VERSION_ID%%.*}
 fi
-echo "📦 Distribuição detectada: ${DISTRO:-indetectável}"
+echo "📦 Distribuição detectada: ${NAME:-indetectável}"
 
 # Ele requer sudo para utilizar gerenciadores de pacotes.
 if [ "$EUID" -ne 0 ]; then
@@ -58,7 +58,8 @@ deb() {
 
 case "$DISTRO" in(
     ubuntu|debian|elementary|mint|zorin|pop)
-        read -p "Você quer instalar via .deb (digite 'deb') ou via .tar.gz (digite 'tar')?" inst_method
+        echo "Você quer instalar via .deb (digite 'deb') ou via .tar.gz (digite 'tar')?"
+        read inst_method
         if [ "$inst_method" = "deb" ]; then
             deb
         elif [ "$inst_method" = "tar" ]; then

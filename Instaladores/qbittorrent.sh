@@ -13,7 +13,7 @@ software_properties_common() {
 }
 
 appimage_install() {
-    echo "Baixando o QBitTorrent do sourceforge..."
+    echo "Baixando o qBittorrent do sourceforge..."
     wget -O qbittorrent.AppImage https://sourceforge.net/projects/qbittorrent/files/latest/download || { echo "Erro: falha no download do AppImage"; return 1; }
     echo "Dando as permissões necessárias..."
     chmod +x qbittorrent.AppImage
@@ -23,10 +23,10 @@ appimage_install() {
 
 qbittorrent_ubuntu_stable() {
     software_properties_common
-    echo "Vamos instalar a versão estável do QBitTorrent para sistemas baseados em Ubuntu."
+    echo "Vamos instalar a versão estável do qBittorrent para sistemas baseados em Ubuntu."
     echo "Adicionando o repositório PPA ao APT..."
     sudo apt-add-repository -y ppa:qbittorrent-team/qbittorrent-stable
-    echo "Atualizando repositórios e baixando o QBitTorrent..."
+    echo "Atualizando repositórios e baixando o qBittorrent..."
     sudo apt update && sudo apt install qbittorrent -y
     echo "Instalação finalizada!"
     exit 0
@@ -34,10 +34,10 @@ qbittorrent_ubuntu_stable() {
 
 qbittorrent_ubuntu_unstable() {
     software_properties_common
-    echo "Vamos instalar a versão instável do QBitTorrent para sistemas baseados em Ubuntu."
+    echo "Vamos instalar a versão instável do qBittorrent para sistemas baseados em Ubuntu."
     echo "Adicionando o repositório PPA ao APT..."
     sudo apt-add-repository -y ppa:qbittorrent-team/qbittorrent-unstable
-    echo "Atualizando repositórios e baixando o QBitTorrent..."
+    echo "Atualizando repositórios e baixando o qBittorrent..."
     sudo apt update && sudo apt install qbittorrent -y
     echo "Instalação finalizada!"
     exit 0
@@ -69,21 +69,21 @@ pardus_install() {
     sudo pisi ar contrib http://packages.pardus.org.tr/contrib-2009/pisi-index.xml.bz2
     echo "Habilitando o repositório 'contrib' caso esteja desabilitado..."
     sudo pisi er contrib
-    echo "Instalando o QBitTorrent..."
+    echo "Instalando o qBittorrent..."
     sudo pisi it --yes qbittorrent
     echo "Instalação finalizada!"
     exit 0
 }
 
 opensuse_install() {
-    echo "QBitTorrent está no repositório oficial do Zypp. Instalando-o..."
+    echo "qBittorrent está no repositório oficial do Zypp. Instalando-o..."
     sudo zypper -n install qbittorrent
     echo "Instalação finalizada!"
     exit 0
 }
 
 mageia_install() {
-    echo "QBitTorrent está no repositório oficial do Mageia. Instalando-o..."
+    echo "qBittorrent está no repositório oficial do Mageia. Instalando-o..."
     sudo urpmi --auto qbittorrent
     echo "Instalação finalizada!"
     exit 0
@@ -99,7 +99,7 @@ gentoo_install() {
     echo "${PKG} ${FLAGS}" | sudo tee "${USEFILE}" >/dev/null
     echo "Atualizando repositórios e instalando o pacote ${PKG}"
     sudo emerge --sync
-    sudo emerge -av --ask=n "${PKG}"
+    sudo emerge -av --ask=n ${PKG}
     echo "Instalação finalizada!"
     exit 0
 }
@@ -107,33 +107,35 @@ gentoo_install() {
 flatpak_install() {
     echo "Instalando o Flatpak..."
     echo "Talvez o comando exija interação do usuário."
+    echo "Instalando o qBittorrent via Flatpak..."
     flatpak install -y flathub org.qbittorrent.qBittorrent
     echo "Instalação finalizada!"
     exit 0
 }
 
 fedora_install() {
-    echo "QBitTorrent está no repositório oficial do Fedora. Instalando-o..."
+    echo "qBittorrent está no repositório oficial do Fedora. Instalando-o..."
     sudo dnf install -y qbittorrent
     echo "Instalação finalizada!"
     exit 0
 }
 
 debian_install() {
-    echo "QBitTorrent está no repositório oficial do Debian. Instalando-o..."
+    echo "qBittorrent está no repositório oficial do Debian. Instalando-o..."
     sudo apt install qbittorrent libtorrent-rasterbar9 -y || sudo apt install qbittorrent -y || sudo apt install qbittorrent libtorrent-rasterbar2.0
     echo "Instalação finalizada!"
     exit 0
 }
 
 arch_install() {
-    echo "Instalando o QBitTorrent pelo repositório oficial do Arch Linux..."
+    echo "Instalando o qBittorrent pelo repositório oficial do Arch Linux..."
     sudo pacman -S --noconfirm qbittorrent
     echo "Instalação finalizada!"
     exit 0
 }
 
 alt_linux_install() {
+    echo "Instalando qBittorrent para Alt Linux..."
     sudo apt update && sudo apt install qbittorrent -y
     echo "Instalação finalizada!"
     exit 0
@@ -150,7 +152,7 @@ if [ -f /etc/os-release ]; then
     DISTRO=$(echo "${ID:-desconhecido}" | tr '[:upper:]' '[:lower:]')
     NAME=${NAME:-desconhecido}
 fi
-echo "📦 Distribuição detectada: ${DISTRO:-indetectável}"
+echo "📦 Distribuição detectada: ${NAME:-indetectável}"
 
 # Ele requer sudo para utilizar gerenciadores de pacotes.
 if [ "$EUID" -ne 0 ]; then
@@ -184,7 +186,8 @@ case "$DISTRO" in
         ;;
     altlinux)
         echo "Alt Linux detectado."
-        read -p "Você quer instalar pelo repositório do Alt Linux (digite 'alt'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_alt
+        echo "Você quer instalar pelo repositório do Alt Linux (digite 'alt'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_alt
         if [ "$install_method_alt" = "alt" ]; then
             alt_linux_install
         elif [ "$install_method_alt" = "appimage" ]; then
@@ -198,7 +201,8 @@ case "$DISTRO" in
         ;;
     slackware)
         echo "Slackware detectado."
-        read -p "Você quer instalar pelo SlackBuild (digite 'slackbuild'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_slackware
+        echo "Você quer instalar pelo SlackBuild (digite 'slackbuild'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_slackware
         if [ "$install_method_slackware" = "slackbuild" ]; then
             slackbuild_install
         elif [ "$install_method_slackware" = "appimage" ]; then
@@ -212,7 +216,8 @@ case "$DISTRO" in
         ;;
     pardus)
         echo "Pardus detectado."
-        read -p "Você quer instalar pelo repositório contrib do pisi (digite 'pisi'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_pardus
+        echo "Você quer instalar pelo repositório contrib do pisi (digite 'pisi'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_pardus
         if [ "$install_method_pardus" = "pisi" ]; then
             pardus_install
         elif [ "$install_method_pardus" = "appimage" ]; then
@@ -226,7 +231,8 @@ case "$DISTRO" in
         ;;
     opensuse*|suse)
         echo "Distribuição openSUSE ou SUSE detectada."
-        read -p "Você quer instalar pelo repositório oficial do Zypp (digite 'zypp'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_opensuse
+        echo "Você quer instalar pelo repositório oficial do Zypp (digite 'zypp'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_opensuse
         if [ "$install_method_opensuse" = "zypp" ]; then
             opensuse_install
         elif [ "$install_method_opensuse" = "appimage" ]; then
@@ -240,7 +246,8 @@ case "$DISTRO" in
         ;;
     mageia)
         echo "Distribuição Mageia detectada."
-        read -p "Você quer instalar pelo repositório oficial do Mageia (digite 'urpmi'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_mageia
+        echo "Você quer instalar pelo repositório oficial do Mageia (digite 'urpmi'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_mageia
         if [ "$install_method_mageia" = "urpmi" ]; then
             mageia_install
         elif [ "$install_method_mageia" = "appimage" ]; then
@@ -254,7 +261,8 @@ case "$DISTRO" in
         ;;
     gentoo)
         echo "Distribuição Gentoo detectada."
-        read -p "Você quer instalar pelo repositório oficial do Gentoo (digite 'portage'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_gentoo
+        echo "Você quer instalar pelo repositório oficial do Gentoo (digite 'portage'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_gentoo
         if [ "$install_method_gentoo" = "portage" ]; then
             gentoo_install
         elif [ "$install_method_gentoo" = "appimage" ]; then
@@ -268,7 +276,8 @@ case "$DISTRO" in
         ;;
     fedora|rhel|centos|rocky|almalinux)
         echo "Distribuição baseada em Fedora ou RHEL detectada."
-        read -p "Você quer instalar pelo repositório oficial do $NAME (digite 'dnf'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_fedora
+        echo "Você quer instalar pelo repositório oficial do $NAME (digite 'dnf'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_fedora
         if [ "$install_method_fedora" = "dnf" ]; then
             fedora_install
         elif [ "$install_method_fedora" = "appimage" ]; then
@@ -282,7 +291,8 @@ case "$DISTRO" in
         ;;
     debian)
         echo "Distribuição Debian detectada."
-        read -p "Você quer instalar pelo repositório oficial do Debian (digite 'apt'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? " install_method_debian
+        echo "Você quer instalar pelo repositório oficial do Debian (digite 'apt'), por Appimage (digite 'appimage') ou pelo Flatpak (digite 'flatpak')? "
+        read install_method_debian
         if [ "$install_method_debian" = "apt" ]; then
             debian_install
         elif [ "$install_method_debian" = "appimage" ]; then
@@ -312,7 +322,7 @@ case "$DISTRO" in
         ;;
     *)
         echo "Distribuição $NAME não suportada pelo script de instalação."
-        echo "Você terá que compilar da fonte manualmente, instalar do repositório do seu sistema"
+        echo "Você terá que compilar da fonte manualmente, instalar do repositório do seu sistema manualmente"
         echo "(não suportado pelos desenvolvedores do Qbittorrent), instalar por Appimage (digite 'appimage')"
         echo "ou por Flatpak (digite 'flatpak')."
         read install_method_unknown

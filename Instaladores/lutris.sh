@@ -136,7 +136,8 @@ fi
 
 case "$DISTRO" in
     pop)
-        read -p "Você gostaria de instalar via Pop!_Shop (digite 'pop'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_pop
+        echo "Você gostaria de instalar via Pop!_Shop (digite 'pop'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_pop
         if [ "$inst_method_pop" = "pop" ]; then
             popos
         elif [ "$inst_method_pop" = "flatpak" ]; then
@@ -151,7 +152,8 @@ case "$DISTRO" in
         fi
         ;;
     ubuntu|elementary|mint|zorin)
-        read -p "Você gostaria de instalar via pacote .deb (digite 'deb'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_ubuntu
+        echo "Você gostaria de instalar via pacote .deb (digite 'deb'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_ubuntu
         if [ "$inst_method_ubuntu" = "deb" ]; then
             ubuntu
         elif [ "$inst_method_ubuntu" = "flatpak" ]; then
@@ -166,7 +168,8 @@ case "$DISTRO" in
         fi
         ;;
     debian)
-        read -p "Você gostaria de instalar via repositório APT (digite 'apt'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_debian
+        echo "Você gostaria de instalar via repositório APT (digite 'apt'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_debian
         if [ "$inst_method_debian" = "apt" ]; then
             debian
         elif [ "$inst_method_debian" = "flatpak" ]; then
@@ -181,7 +184,8 @@ case "$DISTRO" in
         fi
         ;;
     slackware)
-        read -p "Você gostaria de instalar via SlackBuild (digite 'slackbuild'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_slackware
+        echo "Você gostaria de instalar via SlackBuild (digite 'slackbuild'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_slackware
         if [ "$inst_method_slackware" = "slackbuild" ]; then
             slackbuild
         elif [ "$inst_method_slackware" = "flatpak" ]; then
@@ -196,7 +200,8 @@ case "$DISTRO" in
         fi
         ;;
     fedora)
-        read -p "Você gostaria de instalar via DNF (digite 'dnf'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_fedora
+        echo "Você gostaria de instalar via DNF (digite 'dnf'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_fedora
         if [ "$inst_method_fedora" = "dnf" ]; then
             sudo dnf install lutris -y
         elif [ "$inst_method_fedora" = "flatpak" ]; then
@@ -211,7 +216,8 @@ case "$DISTRO" in
         fi
         ;;
     opensuse*|suse)
-        read -p "Você gostaria de instalar via Zypp (digite 'zypp'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_suse
+        echo "Você gostaria de instalar via Zypp (digite 'zypp'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_suse
         if [ "$inst_method_suse" = "zypp" ]; then
             sudo zypper --non-interactive install lutris
         elif [ "$inst_method_suse" = "flatpak" ]; then
@@ -226,7 +232,8 @@ case "$DISTRO" in
         fi
         ;;
     arch|manjaro|endeavouros)
-        read -p "Você gostaria de instalar via Arch Extra Repository (digite 'extra'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_arch
+        echo "Você gostaria de instalar via Arch Extra Repository (digite 'extra'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_arch
         if [ "$inst_method_arch" = "extra" ]; then
             sudo pacman -S --noconfirm lutris
         elif [ "$inst_method_arch" = "flatpak" ]; then
@@ -241,7 +248,8 @@ case "$DISTRO" in
         fi
         ;;
     solus)
-        read -p "Você gostaria de instalar via EOPKG (digite 'eopkg'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_solus
+        echo "Você gostaria de instalar via EOPKG (digite 'eopkg'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_solus
         if [ "$inst_method_solus" = "eopkg" ]; then
             sudo eopkg install -y lutris
         elif [ "$inst_method_solus" = "flatpak" ]; then
@@ -256,7 +264,8 @@ case "$DISTRO" in
         fi
         ;;
     clear-linux-os)
-        read -p "Você gostaria de instalar via Bundle (digite 'swupd'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_clear
+        echo "Você gostaria de instalar via Bundle (digite 'swupd'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_clear
         if [ "$inst_method_clear" = "swupd" ]; then
             sudo swupd bundle-add lutris
         elif [ "$inst_method_clear" = "flatpak" ]; then
@@ -271,7 +280,8 @@ case "$DISTRO" in
         fi
         ;;
     mageia)
-        read -p "Você gostaria de instalar via urpmi (digite 'urpmi'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_mageia
+        echo "Você gostaria de instalar via urpmi (digite 'urpmi'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_mageia
         if [ "$inst_method_mageia" = "urpmi" ]; then
             sudo urpmi --auto lutris
         elif [ "$inst_method_mageia" = "flatpak" ]; then
@@ -286,7 +296,8 @@ case "$DISTRO" in
         fi
         ;;
     gentoo)
-        read -p "Você gostaria de instalar via Portage (digite 'portage'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_gentoo
+        echo "Você gostaria de instalar via Portage (digite 'portage'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_gentoo
         if [ "$inst_method_gentoo" = "portage" ]; then
             sudo emerge --quiet --verbose --oneshot games-util/lutris
         elif [ "$inst_method_gentoo" = "flatpak" ]; then
@@ -301,7 +312,8 @@ case "$DISTRO" in
         fi
         ;;
     centos|almalinux|rocky|rhel)
-        read -p "Você gostaria de instalar via EPEL (digite 'epel'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_enterprise
+        echo "Você gostaria de instalar via EPEL (digite 'epel'), via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_enterprise
         if [ "$inst_method_enterprise" = "epel" ]; then
             epel
         elif [ "$inst_method_gentoo" = "flatpak" ]; then
@@ -317,7 +329,8 @@ case "$DISTRO" in
         ;;
     *)
         echo "Distro desconhecida."
-        read -p "Você gostaria de instalar via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? " inst_method_unknown
+        echo "Você gostaria de instalar via Flatpak (digite 'flatpak'), via tarball (digite 'tar') ou via código-fonte (para desenvolvedores, digite 'git')? "
+        read inst_method_unknown
         if [ "$inst_method_unknown" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method_unknown" = "tar" ]; then

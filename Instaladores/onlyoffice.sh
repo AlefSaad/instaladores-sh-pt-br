@@ -4,11 +4,15 @@
 
 set -euo pipefail
 
-# Verificação de arquitetura — Brave é apenas x86_64/amd64
+# Verificação de arquitetura — OnlyOffice é apenas x86_64/amd64
 ARCH=$(uname -m)
 
-if [ "$ARCH" != "x86_64" ] && [ "$ARCH" != "amd64" ]; then
-    echo "❌ Esta máquina usa arquitetura '$ARCH'."
+only="ONLYOFFICE DesktopEditors"
+
+if [ "$ARCH" = "x86_64" ] || [ "$ARCH" = "amd64" ]; then
+    echo "Esta máquina usa arquitetura $ARCH. Prosseguindo..."
+else
+    echo "Esta máquina usa arquitetura $ARCH."
     echo "O OnlyOffice só fornece pacotes oficiais para x86_64 (amd64)."
     echo "Instalação abortada."
     exit 1
@@ -22,7 +26,7 @@ if [ -f /etc/os-release ]; then
     NAME=${NAME:-desconhecido}
     VER=${VERSION_ID%%.*}
 fi
-echo "📦 Distribuição detectada: ${DISTRO:-indetectável}"
+echo "📦 Distribuição detectada: ${NAME:-indetectável}"
 
 # Ele requer sudo para utilizar gerenciadores de pacotes.
 if [ "$EUID" -ne 0 ]; then
@@ -30,7 +34,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 deb() {
-    echo "Baixando o pacote .deb do site oficial do OnlyOffice..."
+    echo "Baixando o pacote .deb do site oficial do $only..."
     wget "https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors_amd64.deb"
     echo "Instalando o pacote Debian..."
     sudo dpkg -i onlyoffice-desktopeditors_amd64.deb || sudo apt -f install -y
@@ -41,7 +45,7 @@ deb() {
 }
 
 rpm() {
-    echo "Baixando o pacote .rpm do site oficial do OnlyOffice..."
+    echo "Baixando o pacote .rpm do site oficial do $only..."
     wget "https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors.x86_64.rpm"
     echo "Instalando o pacote RPM..."
     sudo dnf install -y ./onlyoffice-desktopeditors.x86_64.rpm
@@ -53,7 +57,7 @@ rpm() {
 
 snapd() {
     echo "É necessário ter o snapd para esta instalação."
-    echo "Instalando o pacote Snap..."
+    echo "Instalando o pacote Snap do $only..."
     sudo snap install onlyoffice-desktopeditors
     echo "Instalação finalizada!"
     exit 0
@@ -61,7 +65,7 @@ snapd() {
 
 flatpak_install() {
     echo "É necessário é Flatpak com o repositório Flathub para esta instalação."
-    echo "Instalando o pacote Flatpak..."
+    echo "Instalando o pacote Flatpak do $only..."
     flatpak install -y flathub org.onlyoffice.desktopeditors
     echo "Instalação finalizada!"
     exit 0
@@ -69,7 +73,7 @@ flatpak_install() {
 
 appimage() {
     FOLDER=$(pwd)
-    echo "Baixando o AppImage do site oficial do OnlyOffice..."
+    echo "Baixando o AppImage do site oficial do $only..."
     wget "https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/latest/download/DesktopEditors-x86_64.AppImage"
     echo "Dando permissões de execução ao AppImage..."
     chmod +x ./DesktopEditors-x86_64.AppImage
@@ -111,9 +115,10 @@ case "$DISTRO" in
         ;;
     *)
         if [ "$DISTRO" = "manjaro" ]; then
-            echo "No Manjaro, o ONLYOFFICE DesktopEditors está disponível no Pamac. É recomendável que você instale por lá."
+            echo "No Manjaro, o $only está disponível no Pamac. É recomendável que você instale por lá."
         fi
-        read -p "Você gostaria de instalar via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? " inst_method
+        echo "Você gostaria de instalar via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? "
+        read inst_method
         if [ "$inst_method" = "flatpak" ]; then
             flatpak_install
         elif [ "$inst_method" = "snapd" ]; then

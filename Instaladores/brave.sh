@@ -9,8 +9,10 @@ set -euo pipefail
 # Verificação de arquitetura — Brave é apenas x86_64/amd64
 ARCH=$(uname -m)
 
-if [ "$ARCH" != "x86_64" ] && [ "$ARCH" != "amd64" ]; then
-    echo "❌ Esta máquina usa arquitetura '$ARCH'."
+if [ "$ARCH" = "x86_64" ] || [ "$ARCH" = "amd64" ]; then
+    echo "Esta máquina usa arquitetura $ARCH. Prosseguindo..."
+else
+    echo "Esta máquina usa arquitetura $ARCH."
     echo "O Brave só fornece pacotes oficiais para x86_64 (amd64)."
     echo "Instalação abortada."
     exit 1
@@ -317,7 +319,8 @@ solus_install() {
 
 case "$DISTRO" in
     debian|ubuntu|zorin|mint|elementary|pop)
-        read -p "Gostaria de instalar pelo repositório APT (digite 'apt') ou pelo script de instalação (digite 'sh')? " inst_method_debian
+        echo "Gostaria de instalar pelo repositório APT (digite 'apt') ou pelo script de instalação (digite 'sh')? "
+        read inst_method_debian
         if [ "$inst_method_debian" = "apt" ]; then
             install_debian
         elif [ "$inst_method_debian" = "sh" ]; then
@@ -328,7 +331,8 @@ case "$DISTRO" in
         fi
         ;;
     fedora|rhel|centos|rocky|almalinux)
-        read -p "Gostaria de instalar pelo repositório do Fedora (digite 'fedora') ou pelo script de instalação (digite 'sh')? " inst_method_fedora
+        echo "Gostaria de instalar pelo repositório do Fedora (digite 'fedora') ou pelo script de instalação (digite 'sh')? "
+        read inst_method_fedora
         if [ "$inst_method_fedora" = "fedora" ]; then
             install_fedora
         elif [ "$inst_method_fedora" = "sh" ]; then
@@ -339,7 +343,8 @@ case "$DISTRO" in
         fi
         ;;
     opensuse*|suse)
-        read -p "Gostaria de instalar pelo repositório do Zypp (digite 'zypp') ou pelo script de instalação (digite 'sh')? " inst_method_suse
+        echo "Gostaria de instalar pelo repositório do Zypp (digite 'zypp') ou pelo script de instalação (digite 'sh')? "
+        read inst_method_suse
         if [ "$inst_method_suse" = "zypp" ]; then
             install_opensuse
         elif [ "$inst_method_suse" = "sh" ]; then
@@ -350,7 +355,8 @@ case "$DISTRO" in
         fi
         ;;
     arch|endeavouros)
-        read -p "Gostaria de instalar pelo repositório do AUR (digite 'aur') ou pelo script de instalação (digite 'sh')? " inst_method_arch
+        echo "Gostaria de instalar pelo repositório do AUR (digite 'aur') ou pelo script de instalação (digite 'sh')? "
+        read inst_method_arch
         if [ "$inst_method_arch" = "aur" ]; then
             install_aur
         elif [ "$inst_method_arch" = "sh" ]; then
@@ -361,7 +367,8 @@ case "$DISTRO" in
         fi
         ;;
     manjaro)
-        read -p "Gostaria de instalar pelo repositório do AUR (digite 'aur'), pelo repositório comunitário do Manjaro (digite 'manjaro') ou pelo script de instalação (digite 'sh')?" inst_method_manjaro
+        echo "Gostaria de instalar pelo repositório do AUR (digite 'aur'), pelo repositório comunitário do Manjaro (digite 'manjaro') ou pelo script de instalação (digite 'sh')? "
+        read inst_method_manjaro
         if [ "$inst_method_manjaro" = "aur" ]; then
             install_aur
         elif [ "$inst_method_manjaro" = "manjaro" ]; then
@@ -374,7 +381,8 @@ case "$DISTRO" in
         fi
         ;;
     solus)
-        read -p "Gostaria de instalar pelo repositório comunitário do Solus (digite 'solus') ou pelo script de instalação (digite 'sh')?" inst_method_solus
+        echo "Gostaria de instalar pelo repositório comunitário do Solus (digite 'solus') ou pelo script de instalação (digite 'sh')? "
+        read inst_method_solus
         if [ "$inst_method_solus" = "solus" ]; then
             solus_install
         elif [ "$inst_method_solus" = "sh" ]; then

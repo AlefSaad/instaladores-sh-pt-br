@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Criado por Alef Saad
 
+set -euo pipefail
+
 echo "Para a instalação do PPA, será instalada a dependência curl."
 
 # Detectar distribuição
@@ -11,7 +13,7 @@ if [ -f /etc/os-release ]; then
     DISTRO=$(echo "${ID:-desconhecido}" | tr '[:upper:]' '[:lower:]')
     NAME=${NAME:-desconhecido}
 fi
-echo "📦 Distribuição detectada: ${DISTRO:-indetectável}"
+echo "📦 Distribuição detectada: ${NAME:-indetectável}"
 
 # Estabelecendo funções
 

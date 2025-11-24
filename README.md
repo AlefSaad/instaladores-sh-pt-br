@@ -56,8 +56,8 @@
 ## Instalador do Discord
 
 ### Pode instalar o Discord por:
- - Pacote Debian;
- - Tarball.
+ - Pacote .deb para sistemas baseados em Debian;
+ - Pacote .tar.gz para o resto.
 
 ## Instalador do Spotify
 
@@ -73,7 +73,7 @@
  - Pacote .tar.gz;
  - Repositório AUR.
 
-## Instalador do OnlyOffice
+## Instalador do ONLYOFFICE DesktopEditors
 
 ### Pode instalar por:
  - Pacote .deb;
@@ -91,6 +91,18 @@
  - Repositório Contrib do Pardus;
  - Portage com USE Flags no Gentoo;
  - Repositórios contidos normalmente nos sistemas: Debian, Fedora, Arch Linux, Alt Linux e Mageia;
+ - Flatpak.
+
+## Instalador do Deezer para Linux
+
+**ATENÇÃO: O Deezer não tem uma versão oficial com suporte a Linux. Este instalador instala uma versão comunitária para Linux disponível no link a seguir:** https://github.com/aunetx/deezer-linux#deezer-for-linux
+
+### Pode instalar por:
+ - AppImage;
+ - Pacote .deb;
+ - Pacote .rpm para sistemas baseados em Fedora e RHEL;
+ - Pacote .rpm para sistemas SUSE;
+ - Pacote Snap (não disponível no Snapcraft);
  - Flatpak.
 
 # Como usar:

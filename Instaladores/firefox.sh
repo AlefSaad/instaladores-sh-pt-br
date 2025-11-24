@@ -14,7 +14,7 @@ if [ -f /etc/os-release ]; then
     DISTRO=$(echo "${ID:-desconhecido}" | tr '[:upper:]' '[:lower:]')
     NAME=${NAME:-desconhecido}
 fi
-echo "Distribuição detectada: ${DISTRO:-indetectável}"
+echo "Distribuição detectada: ${NAME:-indetectável}"
 
 if [ "$DISTRO" = "debian" ]; then
     echo "Lendo arquivo /etc/debian_version e criando variáveis..."
@@ -209,7 +209,8 @@ install_firefox_native() {
 # Fluxo principal
 case "$DISTRO" in
     debian|ubuntu|mint|pop|elementary|zorin)
-        read -p "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snap') ou o repositório APT oficial da Mozilla (digite 'apt')? " inst_method_debian
+        echo "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snap') ou o repositório APT oficial da Mozilla (digite 'apt')? "
+        read inst_method_debian
         if [ "$inst_method_debian" = "tar" ]; then
             install_tarball
         elif [ "$inst_method_debian" = "flatpak" ]; then
@@ -225,7 +226,8 @@ case "$DISTRO" in
         ;;
     *)
         echo "Se você quiser instalar via repositórios do sistema, faça isso manualmente."
-        read -p "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snap')? ou pelo gerenciador de pacotes do sistema (digite 'native')? " inst_method_generic
+        echo "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snap')? ou pelo gerenciador de pacotes do sistema (digite 'native')? "
+        read inst_method_generic
         if [ "$inst_method_generic" = "tar" ]; then
             install_tarball
         elif [ "$inst_method_generic" = "flatpak" ]; then
