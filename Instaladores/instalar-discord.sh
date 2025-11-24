@@ -51,7 +51,7 @@ deb() {
     echo "Baixando o arquivo .deb do Discord..."
     wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
     echo "Instalando o pacote .deb do Discord..."
-    sudo dpkg -i lutris-latest.deb || sudo apt -f install -y
+    sudo dpkg -i discord.deb || sudo apt -f install -y
     echo "Instalação finalizada!"
     exit 0
 }
