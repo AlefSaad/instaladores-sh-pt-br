@@ -56,9 +56,17 @@ deb() {
     exit 0
 }
 
-case "$DISTRO" in
+case "$DISTRO" in(
     ubuntu|debian|elementary|mint|zorin|pop)
-        deb ;;
+        read -p "Você quer instalar via .deb (digite 'deb') ou via .tar.gz (digite 'tar')?" inst_method
+        if [ "$inst_method" = "deb" ]; then
+            deb
+        elif [ "$inst_method" = "tar" ]; then
+            targz
+        else
+            echo "Erro: digite 'deb' ou 'tar'."
+            exit 1
+        ;;
     *)
         targz ;;
 esac
