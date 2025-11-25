@@ -63,7 +63,7 @@ slackbuild() {
     echo "Baixando o SlackBuild..."
     wget https://slackbuilds.org/slackbuilds/15.0/games/lutris.tar.gz
     echo "Extraindo o arquivo tar..."
-    tar xf lutris.tar.gz
+    tar xvzf lutris.tar.gz
     cd lutris/
     echo "Executando o SlackBuild..."
     sudo sh lutris.SlackBuild
@@ -91,18 +91,19 @@ git_source() {
 }
 
 tarball() {
-    echo "Entrando na sua /home..."
-    cd $HOME
+    folder_download=$(pwd)
     echo "Baixando a versão tar.xz estável mais recente..."
     echo "Versão: ${VERSION} Link: ${TARBALL_URL}"
     wget -O lutris-latest.tar.xz $TARBALL_URL
-    echo "Extraindo o arquivo tar.xz do Lutris..."
-    tar xf lutris-latest.tar.xz
+    echo "Em qual pasta você gostaria de extrair o arquivo tar.xz?"
+    read folder
+    echo "Extraindo o arquivo tar.xz do Lutris na pasta selecionada..."
+    tar xJf lutris-latest.tar.xz -C "$folder"
     echo "Executando o Lutris..."
     cd ./lutris
     ./bin/lutris -d
     echo "Removendo o tar.xz do Lutris..."
-    rm $HOME/lutris-latest.tar.xz
+    rm $folder_download/lutris-latest.tar.xz
     echo "Lutris executado."
     return 0
 }

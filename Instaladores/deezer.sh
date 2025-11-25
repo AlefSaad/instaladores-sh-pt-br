@@ -51,14 +51,19 @@ fi
 tarxz() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_tar" | grep '\.tar\.xz$' | cut -d '"' -f 4)
+    if [ -z "$ASSET" ]; then
+        echo "Erro: não foi encontrado o link para download."
+        exit 1
+    fi
     echo "Baixando o tar.xz do GitHub..."
     wget -O deezer-linux.tar.xz "$ASSET"
     DIR=$(tar -tf deezer-linux.tar.xz | head -1 | cut -d '/' -f 1)
-    read -p "Em qual pasta você gostaria de extrair o arquivo tar.xz?" folder
+    echo "Em qual pasta você gostaria de extrair o arquivo tar.xz?"
+    read folder
     echo "Extraindo o arquivo..."
-    tar -xvzf deezer-linux.tar.xz -C "$folder"
+    tar -xvJf deezer-linux.tar.xz -C "$folder"
     echo "Removendo o tarball remanescente..."
-    rm ./deezer-linux.tar.xz
+    rm "./deezer-linux.tar.xz"
     echo "Dando permissões necessárias..."
     chmod +x "$folder/$DIR/deezer-desktop"
     echo "O Deezer para Linux está extraído em $folder/$DIR. Para executá-lo, entre nessa pasta e execute o arquivo deezer-desktop."
@@ -68,29 +73,21 @@ tarxz() {
 
 deb() {
     echo "Estabelecendo variáveis..."
-    echo "DEBUG: API = $API"
-    echo "DEBUG: arch_dl_deb = $arch_dl_deb"
-
     ASSET=$(curl -s "$API" \
         | grep -o '"browser_download_url": *"[^"]*"' \
         | grep '\.deb"' \
         | grep "$arch_dl_deb" \
         | cut -d '"' -f 4)
-
     if [ -z "$ASSET" ]; then
-        echo "Erro: Não encontrei nenhum .deb correspondente."
+        echo "Erro: não foi encontrado o link para download."
         exit 1
     fi
-
     echo "Baixando o pacote Debian do GitHub..."
     wget -O deezer-linux.deb "$ASSET"
-
     echo "Instalando o pacote Debian..."
     sudo dpkg -i deezer-linux.deb || sudo apt -f install -y
-
     echo "Removendo o pacote remanescente..."
     rm ./deezer-linux.deb
-
     echo "Instalação finalizada!"
     exit 0
 }
@@ -99,6 +96,10 @@ deb() {
 rpm_opensuse() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_rpm" | grep '\.rpm$' | cut -d '"' -f 4)
+    if [ -z "$ASSET" ]; then
+        echo "Erro: não foi encontrado o link para download."
+        exit 1
+    fi
     echo "Baixando o pacote RPM do GitHub..."
     wget -O deezer-linux.rpm "$ASSET"
     echo "Instalando o pacote RPM..."
@@ -112,6 +113,10 @@ rpm_opensuse() {
 rpm_fedora() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_rpm" | grep '\.rpm$' | cut -d '"' -f 4)
+    if [ -z "$ASSET" ]; then
+        echo "Erro: não foi encontrado o link para download."
+        exit 1
+    fi
     echo "Baixando o pacote RPM do GitHub..."
     wget -O deezer-linux.rpm "$ASSET"
     echo "Instalando o pacote RPM..."
@@ -126,6 +131,10 @@ snap_install() {
     if [ "$arch_dl_snap" = "amd64" ]; then
         echo "Estabelecendo variáveis..."
         ASSET=$(curl -s "$API" | grep browser_download_url | grep "amd64" | grep '\.snap$' | cut -d '"' -f 4)
+        if [ -z "$ASSET" ]; then
+        echo "Erro: não foi encontrado o link para download."
+        exit 1
+        fi
         echo "Baixando o pacote Snap do GitHub..."
         wget -O deezer-linux.snap "$ASSET"
         echo "Instalando o pacote Snap..."
@@ -143,6 +152,10 @@ snap_install() {
 appimage() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_ai" | grep '\.AppImage$' | cut -d '"' -f 4)
+    if [ -z "$ASSET" ]; then
+        echo "Erro: não foi encontrado o link para download."
+        exit 1
+    fi
     folder=$(pwd)
     echo "Baixando o AppImage do GitHub..."
     wget -O deezer-linux.AppImage "$ASSET"

@@ -55,14 +55,16 @@ install_targz() {
     FOLDER=$(pwd)
     echo "Baixando o pacote tar.gz do site oficial do Minecraft..."
     wget https://launcher.mojang.com/download/Minecraft.tar.gz
-    echo "Extraindo o pacote dentro da sua /home..."
-    tar -xvzf $FOLDER/Minecraft.tar.gz -C $HOME
-    cd ~/minecraft-launcher
+    echo "Em qual pasta você gostaria de extrair o arquivo tar.gz?"
+    read folder_extract
+    echo "Extraindo o pacote dentro da pasta escolhida..."
+    tar -xvzf Minecraft.tar.gz -C "$folder_extract"
+    cd "$folder_extract/minecraft-launcher"
     echo "Dando permissões de execução ao binário do Minecraft..."
     chmod +x minecraft-launcher
     echo "Removendo o tar.gz para economizar espaço..."
-    rm $FOLDER/Minecraft.tar.gz
-    echo "Minecraft Launcher instalado em $HOME/minecraft-launcher. Caso deseje inicializá-lo, abra o binário 'minecraft-launcher' dentro da determinada pasta."
+    rm "$FOLDER/Minecraft.tar.gz"
+    echo "Minecraft Launcher instalado em $folder_extract/minecraft-launcher. Caso deseje inicializá-lo, abra o binário 'minecraft-launcher' dentro da determinada pasta."
     echo "Você terá que integrá-lo ao sistema manualmente."
     return 0
 }
@@ -80,21 +82,8 @@ install_aur() {
         echo "Instalação finalizada!"
         exit 0
     else
-        echo "Instalando dependências se necessário..."
-        sudo pacman -S --needed --noconfirm base-devel git
-        echo "Se movendo para a /home do usuário..."
-        cd $HOME
-        echo "Clonando o repositório do AUR..."
-        git clone https://aur.archlinux.org/minecraft-launcher.git
-        echo "Entrando na pasta..."
-        cd minecraft-launcher
-        echo "Instalando o pacote em $HOME/minecraft-launcher..."
-        makepkg -si
-        echo "Pacote instalado. Se você quiser atualizá-lo, terá que digitar:"
-        echo "cd ~/minecraft-launcher"
-        echo "git pull"
-        echo "makepkg -si"
-        return 0
+        echo "Erro: nenhum AUR helper detectado. Você deverá compilar manualmente."
+        return 2
     fi
 }
 

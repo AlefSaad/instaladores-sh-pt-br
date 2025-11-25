@@ -174,16 +174,17 @@ install_tarball() {
     echo "Certifique-se de ter as dependências wget e tar."
     echo "Baixando o tarball do Firefox do site oficial..."
     wget -O $firefox_version-latest.tar.xz "$firefox_tarball_link"
-    read -p "Aonde você gostaria de extrair o tarball?" folder_extract
+    echo "Aonde você gostaria de extrair o tarball?"
+    read folder_extract
     echo "Extraindo o tarball do Firefox..."
     tar xJf $firefox_version-latest.tar.xz -C $folder_extract
     echo "Criando link simbólico para o executável do Firefox..."
-    ln -s $folder_tarball/firefox/firefox /usr/local/bin/firefox
+    ln -s $folder_extract/firefox/firefox /usr/local/bin/firefox
     echo "Baixando uma cópia do arquivo da área de trabalho..."
     wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications
     echo "Removendo o arquivo tar.xz do Firefox..."
     rm "$folder_tarball/$firefox_version-latest.tar.xz"
-    echo "Firefox instalado em $folder_extract. O executável do Firefox está em $folder_extract/firefox/firefox."
+    echo "Firefox instalado em $folder_extract/firefox. O executável do Firefox está em $folder_extract/firefox/firefox."
     return 0
 }
 

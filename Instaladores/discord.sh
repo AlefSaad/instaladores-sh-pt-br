@@ -21,12 +21,12 @@ targz() {
     echo "É necessário ter o wget e o tar instalados para que o script funcione."
     echo "Baixando o arquivo tar.gz do Discord..."
     wget -O discord.tar.gz "https://discord.com/api/download?platform=linux&format=tar.gz"
+    echo "Aonde você gostaria de extrair o tarball?"
+    read folder_extract
     echo "Extraindo o arquivo tar.gz do Discord..."
-    tar -xvzf discord.tar.gz
-    echo "Movendo a pasta do Discord para a sua /home..."
-    sudo mv Discord $HOME/discord
+    tar -xvzf discord.tar.gz -C "$folder_extract"
     echo "Criando link simbólico para o Discord..."
-    sudo ln -s /opt/discord/Discord /usr/bin/discord
+    sudo ln -s "$folder_extract/Discord" "/usr/bin/discord"
     echo "Criando um atalho do desktop para o Discord..."
     sudo tee /usr/share/applications/discord.desktop > /dev/null <<EOF
 [Desktop Entry]
@@ -52,6 +52,8 @@ deb() {
     wget -O discord.deb "https://discord.com/api/download?platform=linux&format=deb"
     echo "Instalando o pacote .deb do Discord..."
     sudo dpkg -i discord.deb || sudo apt -f install -y
+    echo "Removendo o pacote remanescente..."
+    rm discord.deb
     echo "Instalação finalizada!"
     exit 0
 }
