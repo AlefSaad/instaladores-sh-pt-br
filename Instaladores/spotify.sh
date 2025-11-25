@@ -29,7 +29,7 @@ ppa() {
     exit 0
 }
 
-flatpak() {
+flatpak_inst() {
     echo "Certifique-se de ter o Flatpak instalado no seu computador."
     echo "Instalando o Spotify (não oficial) em Flatpak..."
     flatpak install  -y flathub com.spotify.Client
@@ -37,7 +37,7 @@ flatpak() {
     exit 0
 }
 
-snap() {
+snap_inst() {
     echo "Certifique-se de ter o snapd instalado no seu computador."
     echo "Instalando o Spotify em Snap..."
     sudo snap install spotify
@@ -54,9 +54,9 @@ case "$DISTRO" in
         if [ "$inst_method_debian" = "ppa" ]; then
             ppa
         elif [ "$inst_method_debian" = "flatpak" ]; then
-            flatpak
+            flatpak_inst
         elif [ "$inst_method_debian" = "snap" ]; then
-            snap
+            snap_inst
         else
             echo "Erro: digite 'ppa', 'flatpak' ou 'snap'."
             return 1
@@ -66,9 +66,9 @@ case "$DISTRO" in
         echo "Quer instalar via Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? "
         read inst_method
         if [ "$inst_method" = "flatpak" ]; then
-            flatpak
+            flatpak_inst
         elif [ "$inst_method" = "snap" ]; then
-            snap
+            snap_inst
         else
             echo "Erro: digite 'flatpak' ou 'snap'."
             return 1

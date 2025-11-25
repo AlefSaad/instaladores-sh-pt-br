@@ -67,6 +67,7 @@ case "$DISTRO" in(
         else
             echo "Erro: digite 'deb' ou 'tar'."
             exit 1
+        fi
         ;;
     *)
         targz ;;
