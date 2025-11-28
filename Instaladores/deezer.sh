@@ -50,10 +50,14 @@ fi
 
 tarxz() {
     echo "Estabelecendo variáveis..."
-    ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_tar" | grep '\.tar\.xz$' | cut -d '"' -f 4)
+    ASSET=$(curl -s "$API" \
+        | grep -o '"browser_download_url": *"[^"]*"' \
+        | grep '\.tar\.xz$"' \
+        | grep "$arch_dl_tar" \
+        | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
         echo "Erro: não foi encontrado o link para download."
-        exit 1
+        return 1
     fi
     echo "Baixando o tar.xz do GitHub..."
     wget -O deezer-linux.tar.xz "$ASSET"
@@ -95,10 +99,14 @@ deb() {
 
 rpm_opensuse() {
     echo "Estabelecendo variáveis..."
-    ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_rpm" | grep '\.rpm$' | cut -d '"' -f 4)
+    ASSET=$(curl -s "$API" \
+        | grep -o '"browser_download_url": *"[^"]*"' \
+        | grep '\.rpm$"' \
+        | grep "$arch_dl_rpm" \
+        | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
         echo "Erro: não foi encontrado o link para download."
-        exit 1
+        return 1
     fi
     echo "Baixando o pacote RPM do GitHub..."
     wget -O deezer-linux.rpm "$ASSET"
@@ -112,10 +120,14 @@ rpm_opensuse() {
 
 rpm_fedora() {
     echo "Estabelecendo variáveis..."
-    ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_rpm" | grep '\.rpm$' | cut -d '"' -f 4)
+    ASSET=$(curl -s "$API" \
+        | grep -o '"browser_download_url": *"[^"]*"' \
+        | grep '\.rpm$"' \
+        | grep "$arch_dl_rpm" \
+        | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
         echo "Erro: não foi encontrado o link para download."
-        exit 1
+        return 1
     fi
     echo "Baixando o pacote RPM do GitHub..."
     wget -O deezer-linux.rpm "$ASSET"
@@ -130,11 +142,15 @@ rpm_fedora() {
 snap_install() {
     if [ "$arch_dl_snap" = "amd64" ]; then
         echo "Estabelecendo variáveis..."
-        ASSET=$(curl -s "$API" | grep browser_download_url | grep "amd64" | grep '\.snap$' | cut -d '"' -f 4)
-        if [ -z "$ASSET" ]; then
+        ASSET=$(curl -s "$API" \
+        | grep -o '"browser_download_url": *"[^"]*"' \
+        | grep '\.snap$"' \
+        | grep "$arch_dl_snap" \
+        | cut -d '"' -f 4)
+    if [ -z "$ASSET" ]; then
         echo "Erro: não foi encontrado o link para download."
-        exit 1
-        fi
+        return 1
+    fi
         echo "Baixando o pacote Snap do GitHub..."
         wget -O deezer-linux.snap "$ASSET"
         echo "Instalando o pacote Snap..."
