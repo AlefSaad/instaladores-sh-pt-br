@@ -58,7 +58,7 @@ deb() {
     exit 0
 }
 
-case "$DISTRO" in(
+case "$DISTRO" in
     ubuntu|debian|elementary|mint|zorin|pop)
         echo "Você quer instalar via .deb (digite 'deb') ou via .tar.gz (digite 'tar')?"
         read inst_method
