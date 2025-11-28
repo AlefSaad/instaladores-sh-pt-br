@@ -52,7 +52,7 @@ tarxz() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" \
         | grep -o '"browser_download_url": *"[^"]*"' \
-        | grep '\.tar\.xz$"' \
+        | grep '\.tar\.xz' \
         | grep "$arch_dl_tar" \
         | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
@@ -61,7 +61,6 @@ tarxz() {
     fi
     echo "Baixando o tar.xz do GitHub..."
     wget -O deezer-linux.tar.xz "$ASSET"
-    DIR=$(tar -tf deezer-linux.tar.xz | head -1 | cut -d '/' -f 1)
     echo "Em qual pasta você gostaria de extrair o arquivo tar.xz?"
     read folder
     echo "Extraindo o arquivo..."
@@ -69,6 +68,7 @@ tarxz() {
     echo "Removendo o tarball remanescente..."
     rm "./deezer-linux.tar.xz"
     echo "Dando permissões necessárias..."
+    DIR=$(ls /$folder | grep -i deezer)
     chmod +x "$folder/$DIR/deezer-desktop"
     echo "O Deezer para Linux está extraído em $folder/$DIR. Para executá-lo, entre nessa pasta e execute o arquivo deezer-desktop."
     echo "Integre o Deezer ao sistema manualmente."
