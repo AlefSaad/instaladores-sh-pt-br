@@ -234,20 +234,21 @@ install_opensuse() {
 install_aur() {
     echo "Para essa instalação o site do Brave diz que você precisa de um AUR helper. Caso não tenha um, instale um."
     echo "Esse script funciona para o yay e o paru. Se tiver os dois, o yay será escolhido."
+    user=$(logname)
     if command -v yay >/dev/null 2>&1; then
         if [ "$brave_version" = "release" ]; then
             echo "Instalando o Brave pelo yay..."
-            yay -Sy --noconfirm brave-bin
+            sudo -u "$user" yay -Sy --noconfirm brave-bin
             echo "Instalação finalizada!"
             exit 0
         elif [ "$brave_version" = "beta" ]; then
             echo "Instalando o Brave pelo yay..."
-            yay -Sy --noconfirm brave-beta-bin
+            sudo -u "$user" yay -Sy --noconfirm brave-beta-bin
             echo "Instalação finalizada!"
             exit 0
         elif [ "$brave_version" = "nightly" ]; then
             echo "Instalando o Brave pelo yay..."
-            yay -Sy --noconfirm brave-nightly-bin
+            sudo -u "$user" yay -Sy --noconfirm brave-nightly-bin
             echo "Instalação finalizada!"
             exit 0
         else
@@ -257,17 +258,17 @@ install_aur() {
     elif command -v paru >/dev/null 2>&1; then
         if [ "$brave_version" = "release" ]; then
             echo "Instalando o Brave pelo paru..."
-            paru -Sy --noconfirm brave-bin
+            sudo -u "$user" paru -Sy --noconfirm brave-bin
             echo "Instalação finalizada!"
             exit 0
         elif [ "$brave_version" = "beta" ]; then
             echo "Instalando o Brave pelo paru..."
-            paru -Sy --noconfirm brave-beta-bin
+            sudo -u "$user" paru -Sy --noconfirm brave-beta-bin
             echo "Instalação finalizada!"
             exit 0
         elif [ "$brave_version" = "nightly" ]; then
             echo "Instalando o Brave pelo paru..."
-            paru -Sy --noconfirm brave-nightly-bin
+            sudo -u "$user" paru -Sy --noconfirm brave-nightly-bin
             echo "Instalação finalizada!"
             exit 0
         else
