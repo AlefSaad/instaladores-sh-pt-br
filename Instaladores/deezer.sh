@@ -101,7 +101,7 @@ rpm_opensuse() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" \
         | grep -o '"browser_download_url": *"[^"]*"' \
-        | grep '\.rpm$"' \
+        | grep '\.rpm' \
         | grep "$arch_dl_rpm" \
         | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
@@ -122,7 +122,7 @@ rpm_fedora() {
     echo "Estabelecendo variáveis..."
     ASSET=$(curl -s "$API" \
         | grep -o '"browser_download_url": *"[^"]*"' \
-        | grep '\.rpm$"' \
+        | grep '\.rpm' \
         | grep "$arch_dl_rpm" \
         | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
@@ -144,7 +144,7 @@ snap_install() {
         echo "Estabelecendo variáveis..."
         ASSET=$(curl -s "$API" \
         | grep -o '"browser_download_url": *"[^"]*"' \
-        | grep '\.snap$"' \
+        | grep '\.snap' \
         | grep "$arch_dl_snap" \
         | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
@@ -167,7 +167,7 @@ snap_install() {
 
 appimage() {
     echo "Estabelecendo variáveis..."
-    ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_ai" | grep '\.AppImage$' | cut -d '"' -f 4)
+    ASSET=$(curl -s "$API" | grep browser_download_url | grep "$arch_dl_ai" | grep '\.AppImage' | cut -d '"' -f 4)
     if [ -z "$ASSET" ]; then
         echo "Erro: não foi encontrado o link para download."
         exit 1
