@@ -77,7 +77,6 @@
 
 ### Pode instalar por:
  - Pacote .deb;
- - Pacote .rpm;
  - Flatpak;
  - Snap;
  - AppImage.
