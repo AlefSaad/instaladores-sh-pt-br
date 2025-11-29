@@ -44,17 +44,6 @@ deb() {
     exit 0
 }
 
-rpm() {
-    echo "Baixando o pacote .rpm do site oficial do $only..."
-    wget "https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors.x86_64.rpm"
-    echo "Instalando o pacote RPM..."
-    sudo dnf install -y ./onlyoffice-desktopeditors.x86_64.rpm
-    echo "Removendo o pacote RPM..."
-    rm ./onlyoffice-desktopeditors.x86_64.rpm
-    echo "Instalação finalizada!"
-    exit 0
-}
-
 snapd() {
     echo "É necessário ter o snapd para esta instalação."
     echo "Instalando o pacote Snap do $only..."
@@ -94,22 +83,6 @@ case "$DISTRO" in
             appimage
         else
             echo "Erro: digite 'deb', 'flatpak', 'snapd' ou 'appimage'."
-            exit 1
-        fi
-        ;;
-    fedora|rhel|centos|rocky|almalinux)
-        echo "Você gostaria de instalar via pacote RPM (digite 'rpm'), via Flatpak (digite 'flatpak'), via Snap (digite 'snapd') ou via AppImage (digite 'appimage')? "
-        read inst_method
-        if [ "$inst_method" = "rpm" ]; then
-            rpm
-        elif [ "$inst_method" = "flatpak" ]; then
-            flatpak_install
-        elif [ "$inst_method" = "snapd" ]; then
-            snapd
-        elif [ "$inst_method" = "appimage" ]; then
-            appimage
-        else
-            echo "Erro: digite 'rpm', 'flatpak', 'snapd' ou 'appimage'."
             exit 1
         fi
         ;;
