@@ -207,7 +207,7 @@ echo "A instalação via Flatpak depende da instalação do flatpak para funcion
 
 case "$DISTRO" in
     debian|ubuntu|pop|zorin|mint|elementary)
-        echo "Você gostaria de instalar pelo .deb (digite 'deb'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap') ou pelo Flatpak (digite 'flatpak')? "
+        echo "Você gostaria de instalar pelo .deb (digite 'deb'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
         read inst_method
         if [ "$inst_method" = "deb" ]; then
             deb
@@ -223,7 +223,7 @@ case "$DISTRO" in
             echo "Erro: digite 'deb', 'tar', 'snap', 'flatpak', ou 'appimage'."
         fi ;;
     opensuse*|suse)
-        echo "Você gostaria de instalar pelo .rpm (digite 'rpm'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap') ou pelo Flatpak (digite 'flatpak')? "
+        echo "Você gostaria de instalar pelo .rpm (digite 'rpm'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
         read inst_method
         if [ "$inst_method" = "rpm" ]; then
             rpm_opensuse
