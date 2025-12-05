@@ -14,6 +14,7 @@ Instalador do Minecraft Launcher (digite 'mclauncher')
 Instalador do qBittorrent (digite 'qbittorrent')
 Instalador do ONLYOFFICE DesktopEditors (digite 'onlyoffice')
 Instalador do pacote comunitário [https://github.com/aunetx/deezer-linux para mais detalhes] do Deezer para Linux (digite 'deezer')
+Instalador do Snap [Instala o snapd pelo gerenciador de pacotes do sistema, o snapd pelo Snap, a Snap Store e instala o plugin da loja do sistema.] (digite 'snap')
 "
 read setup_installer
 
