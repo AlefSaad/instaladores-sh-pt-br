@@ -49,28 +49,28 @@ snap_inst() {
 
 case "$DISTRO" in
     ubuntu|pop|zorin|mint|debian|elementary)
-        echo "Quer instalar via PPA (digite 'ppa'), Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? "
+        echo "Quer instalar via PPA (digite 'ppa'), Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snapd')? "
         read inst_method_debian
         if [ "$inst_method_debian" = "ppa" ]; then
             ppa
         elif [ "$inst_method_debian" = "flatpak" ]; then
             flatpak_inst
-        elif [ "$inst_method_debian" = "snap" ]; then
+        elif [ "$inst_method_debian" = "snapd" ]; then
             snap_inst
         else
-            echo "Erro: digite 'ppa', 'flatpak' ou 'snap'."
+            echo "Erro: digite 'ppa', 'flatpak' ou 'snapd'."
             return 1
         fi
         ;;
     *)
-        echo "Quer instalar via Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snap')? "
+        echo "Quer instalar via Flatpak (não é suportado oficialmente pelo Spotify) (digite 'flatpak') ou Snap (digite 'snapd')? "
         read inst_method
         if [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
-        elif [ "$inst_method" = "snap" ]; then
+        elif [ "$inst_method" = "snapd" ]; then
             snap_inst
         else
-            echo "Erro: digite 'flatpak' ou 'snap'."
+            echo "Erro: digite 'flatpak' ou 'snapd'."
             return 1
         fi
         ;;
