@@ -207,66 +207,66 @@ echo "A instalação via Flatpak depende da instalação do flatpak para funcion
 
 case "$DISTRO" in
     debian|ubuntu|pop|zorin|mint|elementary)
-        echo "Você gostaria de instalar pelo .deb (digite 'deb'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
+        echo "Você gostaria de instalar pelo .deb (digite 'deb'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snapd'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
         read inst_method
         if [ "$inst_method" = "deb" ]; then
             deb
         elif [ "$inst_method" = "tar" ]; then
             tarxz
-        elif [ "$inst_method" = "snap" ]; then
+        elif [ "$inst_method" = "snapd" ]; then
             snap
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
             appimage
         else
-            echo "Erro: digite 'deb', 'tar', 'snap', 'flatpak', ou 'appimage'."
+            echo "Erro: digite 'deb', 'tar', 'snapd', 'flatpak', ou 'appimage'."
         fi ;;
     opensuse*|suse)
-        echo "Você gostaria de instalar pelo .rpm (digite 'rpm'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
+        echo "Você gostaria de instalar pelo .rpm (digite 'rpm'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snapd'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
         read inst_method
         if [ "$inst_method" = "rpm" ]; then
             rpm_opensuse
         elif [ "$inst_method" = "tar" ]; then
             tarxz
-        elif [ "$inst_method" = "snap" ]; then
+        elif [ "$inst_method" = "snapd" ]; then
             snap
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
             appimage
         else
-            echo "Erro: digite 'rpm', 'tar', 'snap', 'flatpak', ou 'appimage'."
+            echo "Erro: digite 'rpm', 'tar', 'snapd', 'flatpak', ou 'appimage'."
         fi ;;
     fedora|rhel|centos|rocky|almalinux)
-        echo "Você gostaria de instalar pelo .rpm (digite 'rpm'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
+        echo "Você gostaria de instalar pelo .rpm (digite 'rpm'), pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snapd'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
         read inst_method
         if [ "$inst_method" = "rpm" ]; then
             rpm_fedora
         elif [ "$inst_method" = "tar" ]; then
             tarxz
-        elif [ "$inst_method" = "snap" ]; then
+        elif [ "$inst_method" = "snapd" ]; then
             snap
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
             appimage
         else
-            echo "Erro: digite 'rpm', 'tar', 'snap', 'flatpak', ou 'appimage'."
+            echo "Erro: digite 'rpm', 'tar', 'snapd', 'flatpak', ou 'appimage'."
         fi ;;
     *)
-        echo "Você gostaria de instalar pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snap'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
+        echo "Você gostaria de instalar pelo .tar.xz (digite 'tar'), pelo pacote Snap (digite 'snapd'), pelo Flatpak (digite 'flatpak') ou pelo AppImage (digite 'appimage')? "
         read inst_method
         if [ "$inst_method" = "tar" ]; then
             tarxz
-        elif [ "$inst_method" = "snap" ]; then
+        elif [ "$inst_method" = "snapd" ]; then
             snap
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
             appimage
         else
-            echo "Erro: digite 'tar', 'snap', 'flatpak', ou 'appimage'."
+            echo "Erro: digite 'tar', 'snapd', 'flatpak', ou 'appimage'."
         fi ;;
 esac
 
