@@ -214,7 +214,7 @@ case "$DISTRO" in
         elif [ "$inst_method" = "tar" ]; then
             tarxz
         elif [ "$inst_method" = "snapd" ]; then
-            snap
+            snap_install
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
@@ -230,7 +230,7 @@ case "$DISTRO" in
         elif [ "$inst_method" = "tar" ]; then
             tarxz
         elif [ "$inst_method" = "snapd" ]; then
-            snap
+            snap_install
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
@@ -246,7 +246,7 @@ case "$DISTRO" in
         elif [ "$inst_method" = "tar" ]; then
             tarxz
         elif [ "$inst_method" = "snapd" ]; then
-            snap
+            snap_install
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
@@ -260,7 +260,7 @@ case "$DISTRO" in
         if [ "$inst_method" = "tar" ]; then
             tarxz
         elif [ "$inst_method" = "snapd" ]; then
-            snap
+            snap_install
         elif [ "$inst_method" = "flatpak" ]; then
             flatpak_inst
         elif [ "$inst_method" = "appimage" ]; then
