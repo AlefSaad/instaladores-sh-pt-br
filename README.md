@@ -104,6 +104,14 @@
  - Pacote Snap (não disponível no Snapcraft);
  - Flatpak.
 
+ ## Instalador do Snap
+
+ ### Instala **ao seu gosto**:
+  - Pacote snap pelos gerenciadores apt, dnf, yum, pacman e zypper;
+  - O snap oficial do snapd;
+  - A Snap Store;
+  - O plugin da loja do sistema (GNOME Software ou Plasma Discover, de acordo com a DE utilizada no momento da instalação.) pelos gerenciadores apt, dnf, yum, pacman e zypper.
+
 # Como usar:
 
  - Vá em Releases e baixe o arquivo Source code zip ou tar.gz ou digite `git clone https://github.com/AlefSaad/instaladores-sh-pt-br.git` no terminal.
