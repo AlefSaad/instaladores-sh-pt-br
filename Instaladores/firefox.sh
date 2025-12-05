@@ -210,35 +210,35 @@ install_firefox_native() {
 # Fluxo principal
 case "$DISTRO" in
     debian|ubuntu|mint|pop|elementary|zorin)
-        echo "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snap') ou o repositório APT oficial da Mozilla (digite 'apt')? "
+        echo "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snapd') ou o repositório APT oficial da Mozilla (digite 'apt')? "
         read inst_method_debian
         if [ "$inst_method_debian" = "tar" ]; then
             install_tarball
         elif [ "$inst_method_debian" = "flatpak" ]; then
             install_flatpak
-        elif [ "$inst_method_debian" = "snap" ]; then
+        elif [ "$inst_method_debian" = "snapd" ]; then
             install_snap
         elif [ "$inst_method_debian" = "apt" ]; then
             install_debian
         else
-            echo "Erro: digite 'tar', 'flatpak', 'snap' ou 'apt'."
+            echo "Erro: digite 'tar', 'flatpak', 'snapd' ou 'apt'."
             return 1
         fi
         ;;
     *)
         echo "Se você quiser instalar via repositórios do sistema, faça isso manualmente."
-        echo "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snap')? ou pelo gerenciador de pacotes do sistema (digite 'native')? "
+        echo "Você gostaria de instalar o tarball (digite 'tar'), o Flatpak (digite 'flatpak'), o Snap (digite 'snapd')? ou pelo gerenciador de pacotes do sistema (digite 'native')? "
         read inst_method_generic
         if [ "$inst_method_generic" = "tar" ]; then
             install_tarball
         elif [ "$inst_method_generic" = "flatpak" ]; then
             install_flatpak
-        elif [ "$inst_method_generic" = "snap" ]; then
+        elif [ "$inst_method_generic" = "snapd" ]; then
             install_snap
         elif [ "$inst_method_generic" = "native" ]; then
             install_firefox_native
         else
-            echo "Erro: digite 'tar', 'flatpak' ou 'snap'."
+            echo "Erro: digite 'tar', 'flatpak' ou 'snapd'."
             return 1
         fi
         ;;
