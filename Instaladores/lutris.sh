@@ -65,7 +65,10 @@ slackbuild() {
     echo "Extraindo o arquivo tar..."
     tar xvzf lutris.tar.gz
     cd lutris/
+    echo "Baixando o arquivo do código-fonte disponível no SlackBuild..."
+    wget https://github.com/lutris/lutris/archive/refs/tags/v0.5.13/lutris-0.5.13.tar.gz
     echo "Executando o SlackBuild..."
+    chmod +x lutris.SlackBuild
     sudo sh lutris.SlackBuild
     echo "Instalando o pacote..."
     ls /tmp/lutris-*.txz

@@ -48,8 +48,10 @@ slackbuild_install() {
     wget https://slackbuilds.org/slackbuilds/15.0/network/qbittorrent.tar.gz || { echo "Erro: falha no download do SlackBuild"; return 1; }
     echo "Extraindo o arquivo tar.gz..."
     tar xvf qbittorrent.tar.gz
-    echo "Executando o SlackBuild..."
     cd qbittorrent/
+    echo "Baixando arquivo de código fonte disponível no site oficial do SlackBuild..."
+    wget https://sourceforge.net/projects/qbittorrent/files/qbittorrent/qbittorrent-4.6.7/qbittorrent-4.6.7.tar.xz
+    echo "Executando o SlackBuild..."
     chmod +x qbittorrent.SlackBuild
     sudo ./qbittorrent.SlackBuild
     echo "Instalando o pacote gerado..."
