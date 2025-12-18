@@ -104,13 +104,27 @@
  - Pacote Snap (não disponível no Snapcraft);
  - Flatpak.
 
- ## Instalador do Snap
+## Instalador do Snap
 
- ### Instala **ao seu gosto**:
+### Instala **ao seu gosto**:
   - Pacote snap pelos gerenciadores apt, dnf, yum, pacman e zypper;
   - O snap oficial do snapd;
   - A Snap Store;
   - O plugin da loja do sistema (GNOME Software ou Plasma Discover, de acordo com a DE utilizada no momento da instalação.) pelos gerenciadores apt, dnf, yum, pacman e zypper.
+
+## Instalador do Cryptomator
+
+### Pode instalar por:
+ - AppImage oficial;
+ - Repositório PPA oficial;
+ - Flatpak;
+ - Repositório do AUR (cryptomator ou cryptomator-bin) (Instalação pelo Paru ou Yay);
+ - Pacote Nix.
+
+## Instalador do add-apt-repository para sistemas Debian
+
+**ATENÇÃO: Se trata de um script de terceiros que imita o add-apt-repository para ser usado em sistemas Debian para instalar repositórios PPA.**
+**Ele utilizará o sudo para enviar o script para o /bin e criar links simbólicos correspondentes em /bin e /sbin. Não é o script oficial, mas com certeza quebra um galho.**
 
 # Como usar:
 
