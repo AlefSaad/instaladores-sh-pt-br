@@ -70,7 +70,7 @@ install_targz() {
 }
 
 install_aur() {
-    echo "Este comando só tem suporte ao YAY e ao Paru. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR será compilado manualmente."
+    echo "Este comando só tem suporte ao YAY e ao Paru. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR deverá ser compilado manualmente."
     user=$(logname)
     if command -v yay >/dev/null 2>&1; then
         echo "Instalando o pacote via YAY..."

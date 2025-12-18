@@ -3,16 +3,6 @@
 
 set -euo pipefail
 
-echo "Definindo arquitetura do computador..."
-
-ARCH=$(uname -m)
-
-case "$ARCH" in
-    x86_64|amd64)   ARCH_DL="x86_64" ;;
-    aarch64|arm64)  ARCH_DL="arm64" ;;
-    *) echo "Arquitetura não suportada: $ARCH"; exit 1 ;;
-esac
-
 echo "Estabelecendo variáveis..."
 
 API=https://api.github.com/repos/aunetx/deezer-linux/releases/latest
