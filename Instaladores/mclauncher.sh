@@ -70,7 +70,7 @@ install_targz() {
 }
 
 install_aur() {
-    echo "Este comando só tem suporte ao YAY e ao Paru. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR deverá ser compilado manualmente."
+    echo "Este comando só tem suporte ao YAY, ao Paru e ao Pikaur. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR será compilado manualmente."
     user=$(logname)
     if command -v yay >/dev/null 2>&1; then
         echo "Instalando o pacote via YAY..."
@@ -82,9 +82,21 @@ install_aur() {
         sudo -u "$user" paru -S --noconfirm minecraft-launcher
         echo "Instalação finalizada!"
         exit 0
+    elif command -v pikaur >/dev/null 2>&1; then
+        echo "Instalando o pacote via Paru..."
+        sudo -u "$user" pikaur -S --noconfirm minecraft-launcher
+        echo "Instalação finalizada!"
+        exit 0
     else
-        echo "Erro: nenhum AUR helper detectado. Você deverá compilar manualmente."
-        return 2
+        echo "Aonde você quer clonar o repositório Git do AUR?"
+        read folder
+        cd $folder
+        echo "Clonando repositório Git do AUR..."
+        git clone https://aur.archlinux.org/minecraft-launcher.git
+        cd "./minecraft-launcher"
+        makepkg -si
+        echo "Instalação finalizada! Caso queira atualizar, a pasta é $folder/minecraft-launcher."
+        return 0
     fi
 }
 

@@ -30,7 +30,7 @@
  - Para todos os sistemas baseados em Debian;
  - Para todos os sistemas baseados em Fedora (Fedora comum, baseados em RHEL e Atomic Desktops);
  - Para todos os sistemas SUSE;
- - Para sistemas baseados em Arch, o repositório AUR oficial;
+ - Para sistemas baseados em Arch, o repositório AUR oficial (pelo Yay, pelo Paru e pelo Pikaur);
  - Repositório comunitário do Manjaro (não suporta versão nightly);
  - Repositório comunitário do Solus (só suporta a versão release).
 
@@ -71,7 +71,7 @@
 ### Pode instalar o Minecraft Launcher por:
  - Pacote .deb;
  - Pacote .tar.gz;
- - Repositório AUR.
+ - Repositório AUR (Yay, Paru, Pikaur e como fallback, compilação manual do pacote AUR).
 
 ## Instalador do ONLYOFFICE DesktopEditors
 
@@ -118,7 +118,7 @@
  - AppImage oficial;
  - Repositório PPA oficial;
  - Flatpak;
- - Repositório do AUR (cryptomator ou cryptomator-bin) (Instalação pelo Paru ou Yay);
+ - Repositório do AUR (cryptomator ou cryptomator-bin) (Instalação pelo Yay, pelo Paru, pelo Pikaur e como fallback, compilação manual do pacote AUR);
  - Pacote Nix.
 
 ## Instalador do add-apt-repository para sistemas Debian

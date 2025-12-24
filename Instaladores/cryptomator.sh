@@ -68,7 +68,7 @@ inst_aur() {
     echo "Qual pacote você quer utilizar? O baseado em AppImage (cryptomator-bin) (digite 'bin') ou o baseado em código-fonte (cryptomator) (digite 'source')?"
     read inst_def
     if [ "$inst_def" = "bin" ]; then
-        echo "Este comando só tem suporte ao YAY e ao Paru. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR deverá ser compilado manualmente."
+        echo "Este script suporta os seguintes AUR helpers: Yay, Paru e Pikaur. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR será compilado manualmente."
         user=$(logname)
         if command -v yay >/dev/null 2>&1; then
             echo "Instalando o pacote via YAY..."
@@ -80,12 +80,24 @@ inst_aur() {
             sudo -u "$user" paru -S --noconfirm cryptomator-bin
             echo "Instalação finalizada!"
             exit 0
+        elif command -v pikaur >/dev/null 2>&1; then
+            echo "Instalando o pacote via Paru..."
+            sudo -u "$user" pikaur -S --noconfirm cryptomator-bin
+            echo "Instalação finalizada!"
+            exit 0
         else
-            echo "Erro: nenhum AUR helper detectado. Você deverá compilar manualmente."
-            return 2
+            echo "Aonde você quer clonar o repositório Git do AUR?"
+            read folder
+            cd $folder
+            echo "Clonando repositório Git do AUR..."
+            git clone https://aur.archlinux.org/cryptomator-bin.git
+            cd "./cryptomator-bin"
+            makepkg -si
+            echo "Instalação finalizada! Caso queira atualizar, a pasta é $folder/minecraft-launcher."
+            return 0
         fi
     elif [ "$inst_def" = "source" ]; then
-        echo "Este comando só tem suporte ao YAY e ao Paru. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR deverá ser compilado manualmente."
+        echo "Este script suporta os seguintes AUR helpers: Yay, Paru e Pikaur. Se nenhum dos dois estiverem presentes no seu sistema, o pacote AUR será compilado manualmente."
         user=$(logname)
         if command -v yay >/dev/null 2>&1; then
             echo "Instalando o pacote via YAY..."
@@ -97,9 +109,21 @@ inst_aur() {
             sudo -u "$user" paru -S --noconfirm cryptomator
             echo "Instalação finalizada!"
             exit 0
+        elif command -v pikaur >/dev/null 2>&1; then
+            echo "Instalando o pacote via Paru..."
+            sudo -u "$user" pikaur -S --noconfirm cryptomator
+            echo "Instalação finalizada!"
+            exit 0
         else
-            echo "Erro: nenhum AUR helper detectado. Você deverá compilar manualmente."
-            return 2
+            echo "Aonde você quer clonar o repositório Git do AUR?"
+            read folder
+            cd $folder
+            echo "Clonando repositório Git do AUR..."
+            git clone https://aur.archlinux.org/cryptomator.git
+            cd "./cryptomator"
+            makepkg -si
+            echo "Instalação finalizada! Caso queira atualizar, a pasta é $folder/cryptomator."
+            return 0
         fi
     else
         echo "Erro: prompt inválido. Digite 'bin' ou 'source'."
