@@ -17,6 +17,8 @@ Instalador do pacote comunitário [https://github.com/aunetx/deezer-linux para m
 Instalador do Snap [Instala o snapd pelo gerenciador de pacotes do sistema, o snapd pelo Snap, a Snap Store e instala o plugin da loja do sistema.] (digite 'snap')
 Instalador do add-apt-repository (Repositórios PPA) para sistemas Debian (digite 'ppa')
 Instalador do Cryptomator (digite 'cryptomator')
+Instalador do Heroic Games Launcher (digite 'heroic')
+Instalador do GIMP (digite 'gimp')
 "
 read setup_installer
 

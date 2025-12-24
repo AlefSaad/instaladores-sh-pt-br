@@ -126,6 +126,23 @@
 **ATENÇÃO: Se trata de um script de terceiros que imita o add-apt-repository para ser usado em sistemas Debian para instalar repositórios PPA.**
 **Ele utilizará o sudo para enviar o script para o /bin e criar links simbólicos correspondentes em /bin e /sbin. Não é o script oficial, mas com certeza quebra um galho.**
 
+## Instalador do Heroic Games Launcher
+
+### Pode instalar por:
+ - AppImage;
+ - Pacote .deb;
+ - Flatpak;
+ - Repositório do AUR (Instalação pelo Paru ou Yay);
+ - Pacote .rpm;
+ - Pacote Nix.
+
+## Instalador do GIMP
+
+### Pode instalar por:
+ - AppImage oficial;
+ - Flatpak;
+ - Snap.
+
 # Como usar:
 
  - Vá em Releases e baixe o arquivo Source code zip ou tar.gz ou digite `git clone https://github.com/AlefSaad/instaladores-sh-pt-br.git` no terminal.
