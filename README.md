@@ -143,6 +143,16 @@
  - Flatpak;
  - Snap.
 
+## Instalador do WhatsApp para Linux
+
+**ATENÇÃO: não existe uma versão nativa do WhatsApp para Linux. Neste script, se utiliza uma versão comunitária baseada em web app. Vá em** https://github.com/rtosta/zapzap **ou em** https://rtosta.com/zapzap/#home
+
+### Pode instalar por:
+ - AppImage oficial;
+ - Flatpak;
+ - Repositório AUR;
+ - Repositório do Fedora Copr.
+
 # Como usar:
 
  - Vá em Releases e baixe o arquivo Source code zip ou tar.gz ou digite `git clone https://github.com/AlefSaad/instaladores-sh-pt-br.git` no terminal.

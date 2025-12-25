@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Criado por Alef Saad
 # Dependências: wget tar
 # Dependências do Arch Linux manual: base-devel git

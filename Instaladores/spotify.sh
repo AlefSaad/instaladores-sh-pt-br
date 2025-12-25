@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Criado por Alef Saad
 
 set -euo pipefail

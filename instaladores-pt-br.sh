@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+# Criado por Alef Saad
 
 set -euo pipefail
 
@@ -19,6 +20,7 @@ Instalador do add-apt-repository (Repositórios PPA) para sistemas Debian (digit
 Instalador do Cryptomator (digite 'cryptomator')
 Instalador do Heroic Games Launcher (digite 'heroic')
 Instalador do GIMP (digite 'gimp')
+Instalador do WhatsApp para Linux [https://github.com/rafatosta/zapzap | https://rtosta.com/zapzap/#home] (digite 'zapzap' ou 'whatsapp')
 "
 read setup_installer
 

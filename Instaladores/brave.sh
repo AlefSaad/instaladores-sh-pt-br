@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Criado por Alef Saad
 # Dependências gerais: curl
 # Dependências Fedora: dnf-plugins-core

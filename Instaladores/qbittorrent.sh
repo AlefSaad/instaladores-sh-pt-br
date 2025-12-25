@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Por Alef Saad
 # Dependências: wget, tar e flatpak
 
