@@ -153,6 +153,17 @@
  - Repositório AUR;
  - Repositório do Fedora Copr.
 
+## Instalador do Inkscape
+
+### Funciona para as seguintes versões do Inkscape:
+ - Release
+ - Desenvolvimento (dev ou trunk)
+
+### Pode instalar por:
+ - Flatpak;
+ - Repositório PPA;
+ - Snap.
+
 # Como usar:
 
  - Vá em Releases e baixe o arquivo Source code zip ou tar.gz ou digite `git clone https://github.com/AlefSaad/instaladores-sh-pt-br.git` no terminal.

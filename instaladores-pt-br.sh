@@ -21,6 +21,7 @@ Instalador do Cryptomator (digite 'cryptomator')
 Instalador do Heroic Games Launcher (digite 'heroic')
 Instalador do GIMP (digite 'gimp')
 Instalador do WhatsApp para Linux [https://github.com/rafatosta/zapzap | https://rtosta.com/zapzap/#home] (digite 'zapzap' ou 'whatsapp')
+Instalador do Inkscape (digite 'inkscape')
 "
 read setup_installer
 
